@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'apps.contact',
     'apps.event',
+    'apps.gallery',
 ]
 
 MIDDLEWARE = [

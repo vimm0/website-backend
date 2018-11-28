@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% load staticfiles i18n thumbnail %}
+
+{% block title %}
+    {% trans 'Gallery' %}
+{% endblock %}
+{% block content_title %}Gallery{% endblock %}
+
+{% block extrahead %}
+    <link href="{% static "gallery/gallery.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+        <div>
+            {% for album in albums %}
+                <div class="thumbnail album-thumbnail">
+                    <a href="{% url 'album-images' album.slug %}">
+                        {% if album.get_thumbnail.file %}
+                            <img src="{{ album.get_thumbnail.file |thumbnail_url:'avatar' }}" alt="No Image">
+                        {% endif %}
+                    </a>
+
+                    <div class="caption text-center">
+                        <h5><a href="{% url 'album-images' album.slug %}">{{ album.name }}</a></h5>
+                        {% if album.event %}
+                            <a href="{{ album.event.get_absolute_url }}" title="View event details">
+                                <span class="calendar-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+{% endblock %}
+

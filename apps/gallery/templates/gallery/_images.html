@@ -1,0 +1,17 @@
+{% load thumbnail %}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12" id="gallery-images">
+        {% for obj in album.images.all %}
+
+            <div class="thumbnail album-image">
+                <a href="{{ obj.file.url }}" class="gallery" title="{{ obj.title }}">
+                    <img src="{{ obj.file|thumbnail_url:'avatar' }}" alt="No Image">
+                </a>
+                <div class="caption text-center">
+                    <h3 class="h3" id="gallery-name">{{ obj.title }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

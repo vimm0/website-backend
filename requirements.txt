@@ -2,3 +2,5 @@ django
 django-rest-framework
 ipdb
 django-solo
+django-summernote
+Pillow

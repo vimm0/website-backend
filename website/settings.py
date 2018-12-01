@@ -118,7 +118,7 @@ DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'tenant_schemas.postgresql_backend',
-        'NAME': 'website',
+        'NAME': 'website1',
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': '',

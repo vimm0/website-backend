@@ -20,3 +20,7 @@ pass: admin
 
 #### Instructions:
 https://github.com/vimm0/auto-script#django-tenant
+
+
+#### Tags
+- [feature not supported]

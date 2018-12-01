@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 
     'solo',
     'django_summernote',
+    'rest_framework',
 
     'apps.contact',
     'apps.event',
@@ -118,7 +119,7 @@ DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'tenant_schemas.postgresql_backend',
-        'NAME': 'website1',
+        'NAME': 'website',
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': '',
@@ -163,3 +164,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MAPS_API_KEY = 'AIzaSyDbyxMHk_ZduD4Lknmg-mQqWm9AjZ_Elgc'
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

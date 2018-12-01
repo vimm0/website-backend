@@ -6,3 +6,4 @@ django-summernote
 Pillow
 django-tenant-schemas
 psycopg2-binary
+djangorestframework

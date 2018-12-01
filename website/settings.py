@@ -24,11 +24,35 @@ SECRET_KEY = '3=10iokj#r*qrfzd8%9f0w2z+01i)4e9mll6+$pxn!aynmy*oh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'my-domain.com', 'tenant.my-domain.com', ]
 
 # Application definition
+SHARED_APPS = (
+    'tenant_schemas',  # mandatory, should always be before any django app
+    'apps.customer',  # you must list the app where your tenant model resides in
 
+    'django.contrib.contenttypes',
+
+    # everything below here is optional
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    # 'django.contrib.sites',
+    'django.contrib.messages',
+)
+
+TENANT_APPS = (
+    'django.contrib.admin',
+    'django.contrib.contenttypes',
+
+    # your tenant-specific apps
+    'apps.contact',
+    'apps.event',
+    'apps.gallery',
+)
 INSTALLED_APPS = [
+    'tenant_schemas',
+    'apps.customer',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,8 +67,11 @@ INSTALLED_APPS = [
     'apps.event',
     'apps.gallery',
 ]
+TENANT_MODEL = 'customer.Client'
 
 MIDDLEWARE = [
+    'tenant_schemas.middleware.TenantMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,10 +104,26 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+DATABASE_ROUTERS = (
+    'tenant_schemas.routers.TenantSyncRouter',
+)
+DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'tenant_schemas.postgresql_backend',
+        'NAME': 'website',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
+        'ATOMIC_REQUESTS': True,
     }
 }
 

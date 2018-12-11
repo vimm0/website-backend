@@ -20,6 +20,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets, routers
 
 # Serializers define the API representation.
+from apps.contact.models import Message
 from apps.event.models import Event
 
 
@@ -35,6 +36,12 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
+class MessageSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'
+
+
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -46,10 +53,16 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
 
 
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+
+
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'event', EventViewSet)
+router.register(r'message', MessageViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

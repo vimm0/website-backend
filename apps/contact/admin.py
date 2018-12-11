@@ -9,7 +9,7 @@ admin.site.register(ContactSetting, SingletonModelAdmin)
 
 
 class MesageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'created_at', 'message')
+    list_display = ('name', 'email', 'subject', 'message', 'created_at')
     list_filter = ('created_at',)
     search_fields = ('name', 'email', 'message')
 

@@ -50,9 +50,10 @@ class ContactSetting(SingletonModel):
 
 class Message(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    email = models.EmailField(max_length=255, blank=True, null=True)
+    email = models.EmailField(max_length=120, blank=True, null=True)
+    subject = models.CharField(max_length=400, blank=True, null=True)
     message = models.TextField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
 
     def notify(self):

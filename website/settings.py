@@ -53,6 +53,7 @@ TENANT_APPS = (
 INSTALLED_APPS = [
     'tenant_schemas',
     'apps.customer',
+    'grappelli',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -180,6 +181,9 @@ REST_FRAMEWORK = {
     ]
 }
 CORS_ORIGIN_ALLOW_ALL = True
+
+GRAPPELLI_ADMIN_TITLE = PROJECT_NAME
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_FILENAME_GENERATOR = 'utils.base.get_filename'
 CKEDITOR_CONFIGS = {

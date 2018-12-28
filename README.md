@@ -6,7 +6,9 @@
 - core: core settings 
 
 #### TODO
-- tenant specific django templates
+- [x] Grappelli admin interface
+- [x] Setup tenants
+- [ ]tenant specific django templates
 
 #### Tips
 - Never place `'django.contrib.auth'` in shared_apps instead place at tenant_app

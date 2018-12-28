@@ -24,6 +24,7 @@ SECRET_KEY = '3=10iokj#r*qrfzd8%9f0w2z+01i)4e9mll6+$pxn!aynmy*oh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # In browser http://client1.nepexgroup.com:8000
+INTERNAL_IPS = ['127.0.0.1']
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nepexgroup.com', 'client1.nepexgroup.com', 'client2.nepexgroup.com']
 val = "ʷᵉᵇ ˢᵉʳᵛᶦᶜᵉˢ"
 PROJECT_NAME = "Nepex {}".format(val)
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'corsheaders',
+    'debug_toolbar',
 
     'apps.core',
     'apps.contact',
@@ -82,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     'corsheaders.middleware.CorsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

@@ -22,6 +22,7 @@ from rest_framework import serializers, viewsets, routers
 # Serializers define the API representation.
 from apps.contact.models import Message
 from apps.event.models import Event
+from website.settings import PROJECT_NAME
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -64,6 +65,10 @@ router.register(r'users', UserViewSet)
 router.register(r'event', EventViewSet)
 router.register(r'message', MessageViewSet)
 
+admin.site.site_header = PROJECT_NAME
+# admin.site.index_title = PROJECT_NAME
+admin.site.site_title = 'Administration'
+admin.site.site_url = 'https://www.nepexgroup.com'  # place tenant url
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [

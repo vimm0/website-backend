@@ -25,7 +25,8 @@ SECRET_KEY = '3=10iokj#r*qrfzd8%9f0w2z+01i)4e9mll6+$pxn!aynmy*oh'
 DEBUG = True
 # In browser http://client1.nepexgroup.com:8000
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nepexgroup.com', 'client1.nepexgroup.com', 'client2.nepexgroup.com']
-
+val = "ʷᵉᵇ ˢᵉʳᵛᶦᶜᵉˢ"
+PROJECT_NAME = "Nepex {}".format(val)
 # Application definition
 SHARED_APPS = (
     'tenant_schemas',  # mandatory, should always be before any django app

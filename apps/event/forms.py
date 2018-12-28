@@ -1,3 +1,4 @@
+from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django_summernote.widgets import SummernoteWidget
 
@@ -9,7 +10,7 @@ class EventModelForm(forms.ModelForm):
         model = Event
         fields = "__all__"
         widgets = {
-            'description_pre': SummernoteWidget(),
-            'description_post': SummernoteWidget(),
-            'description_common': SummernoteWidget(),
+            'description_pre': CKEditorWidget(),
+            'description_post': CKEditorWidget(),
+            'description_common': CKEditorWidget(),
         }

@@ -2,7 +2,7 @@ django
 django-rest-framework
 ipdb
 django-solo
-django-summernote
+django-ckeditor
 Pillow
 django-tenant-schemas
 psycopg2-binary

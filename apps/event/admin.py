@@ -5,8 +5,8 @@ from apps.event.forms import EventModelForm
 from .models import Event
 
 
-class SomeModelAdmin(admin.ModelAdmin):
+class EventAdmin(admin.ModelAdmin):
     form = EventModelForm
 
 
-admin.site.register(Event, SomeModelAdmin)
+admin.site.register(Event, EventAdmin)

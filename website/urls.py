@@ -69,8 +69,8 @@ router.register(r'message', MessageViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
     path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
 
 ]

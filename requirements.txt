@@ -7,3 +7,4 @@ Pillow
 django-tenant-schemas
 psycopg2-binary
 djangorestframework
+django-cors-headers

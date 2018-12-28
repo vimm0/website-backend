@@ -23,8 +23,8 @@ SECRET_KEY = '3=10iokj#r*qrfzd8%9f0w2z+01i)4e9mll6+$pxn!aynmy*oh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'my-domain.com', 'tenant.my-domain.com', ]
+# In browser http://client1.nepexgroup.com:8000
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nepexgroup.com', 'client1.nepexgroup.com', 'client2.nepexgroup.com']
 
 # Application definition
 SHARED_APPS = (
@@ -34,13 +34,13 @@ SHARED_APPS = (
     'django.contrib.contenttypes',
 
     # everything below here is optional
-    'django.contrib.auth',
     'django.contrib.sessions',
     # 'django.contrib.sites',
     'django.contrib.messages',
 )
 
 TENANT_APPS = (
+    'django.contrib.auth',  # always in tenant apps
     'django.contrib.admin',
     'django.contrib.contenttypes',
 
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'solo',
     'django_summernote',
     'rest_framework',
+    'corsheaders',
 
     'apps.contact',
     'apps.event',
@@ -75,6 +76,9 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -168,6 +172,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAdminUser'
     ]
 }
+CORS_ORIGIN_ALLOW_ALL = True

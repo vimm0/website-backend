@@ -2,6 +2,9 @@
 
 - django-tenant-schemas
 
+#### Models
+- core: core settings 
+
 #### Tips
 - Never place `'django.contrib.auth'` in shared_apps instead place at tenant_app
 #### Schema structure

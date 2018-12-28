@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    'apps.core',
     'apps.contact',
     'apps.event',
     'apps.gallery',
